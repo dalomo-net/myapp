@@ -4,18 +4,29 @@ import "./index.css";
 import PropTypes from "prop-types";
 
 class Square extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
+
   render() {
-    return <button className="square">{this.props.value}</button>;
+    return (
+      <button className="square" onClick={() => this.setState({ value: "X" })}>
+        {this.state.value}
+      </button>
+    );
   }
 }
 
 Square.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.string,
 };
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square value={i} />;
+    return <Square />;
   }
 
   render() {
